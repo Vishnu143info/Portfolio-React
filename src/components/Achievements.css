@@ -2,7 +2,7 @@
 .gradient-border {
   position: relative;
   border-radius: 12px;
-  padding: 2px; /* space for border */
+  padding: 2px; 
   background: var(--border-gradient);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -10,7 +10,7 @@
 .gradient-border .card-header,
 .gradient-border .card-body {
   border-radius: 10px;
-  background: #fff; /* inside card stays white */
+  background: #fff; 
 }
 
 /* Card hover animation */

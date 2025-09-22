@@ -1,35 +1,35 @@
 import { Award, Star, Briefcase, Heart, Users } from "lucide-react";
-import "./Achievements.css"; // ✅ custom CSS for animations + gradients
+import "./Achievements.css"; 
 
 export default function Achievements() {
   const achievements = [
     {
       icon: <Award className="me-2 text-white" size={20} />,
-      gradient: "linear-gradient(90deg, #ec4899, #ef4444)", // pink-red
+      gradient: "linear-gradient(90deg, #ec4899, #ef4444)", 
       title: "Leadership",
       desc: "Served as the Placement Representative for the CSE department, bridging communication between students and recruiters, organizing placement drives, and supporting career readiness efforts.",
     },
     {
       icon: <Star className="me-2 text-white" size={20} />,
-      gradient: "linear-gradient(90deg, #facc15, #f97316)", // yellow-orange
+      gradient: "linear-gradient(90deg, #facc15, #f97316)", 
       title: "Academic Performance",
       desc: "Maintained a CGPA of 7.5 in B.E. and secured 90% in Diploma (Computer Engineering).",
     },
     {
       icon: <Briefcase className="me-2 text-white" size={20} />,
-      gradient: "linear-gradient(90deg, #6366f1, #3b82f6)", // indigo-blue
+      gradient: "linear-gradient(90deg, #6366f1, #3b82f6)", 
       title: "Internship Excellence",
       desc: "Recognized for proactive development contributions during my internship at Smartcliff, where I focused on UI/UX improvements and bug fixes.",
     },
     {
       icon: <Heart className="me-2 text-white" size={20} />,
-      gradient: "linear-gradient(90deg, #ef4444, #ec4899)", // red-pink
+      gradient: "linear-gradient(90deg, #ef4444, #ec4899)", 
       title: "Volunteering",
       desc: "Actively organized community events to promote awareness of social issues and foster public engagement.",
     },
     {
       icon: <Users className="me-2 text-white" size={20} />,
-      gradient: "linear-gradient(90deg, #10b981, #22c55e)", // green-emerald
+      gradient: "linear-gradient(90deg, #10b981, #22c55e)", 
       title: "Event Coordinator",
       desc: "Served as Department Secretary for the CSE department during my diploma, coordinating events, managing communications, and supporting faculty.",
     },
