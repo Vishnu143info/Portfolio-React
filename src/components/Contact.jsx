@@ -12,6 +12,7 @@ import {
   Sparkles,
   Calendar
 } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -35,40 +36,43 @@ export default function Contact() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  setLoading(true);
 
-    const formData = new FormData(e.target);
-    
-    // Add custom subject
-    formData.append('_subject', 'New Contact from Portfolio Website');
-
-    fetch("https://formsubmit.co/ajax/vishnuprasathappanasamy@gmail.com", {
-      method: "POST",
-      headers: { 
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: e.target.name.value,
-        email: e.target.email.value,
-        message: e.target.message.value,
-        _subject: 'New Contact from Portfolio Website'
-      }),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        setSubmitted(true);
-        setLoading(false);
-        e.target.reset();
-        setFormData({ name: '', email: '', message: '' });
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoading(false);
-      });
+  const templateParams = {
+    name: formData.name,
+    email: formData.email,
+    message: formData.message,
   };
+
+  // Send main email (goes to YOU)
+  emailjs.send(
+    "service_lk89fwb",           // your service ID
+    "template_gma2e6x",             // replace with your main template ID
+    templateParams,
+    "Re1zSQsJC0kZf2LMj"            // your public key
+  )
+  .then(() => {
+    // Send AUTO REPLY (goes to USER)
+    return emailjs.send(
+      "service_lk89fwb",         // same service ID
+      "template_80vl6up",      // replace with your auto reply template ID
+      templateParams,
+      "Re1zSQsJC0kZf2LMj"
+    );
+  })
+  .then(() => {
+    setSubmitted(true);
+    setLoading(false);
+    setFormData({ name: "", email: "", message: "" });
+  })
+  .catch((error) => {
+    console.error("EmailJS Error:", error);
+    setLoading(false);
+  });
+};
+
 
   const contactInfo = [
     {
@@ -86,8 +90,8 @@ export default function Contact() {
     {
       icon: <MapPin className="text-red-400" size={24} />,
       title: "Location",
-      value: "Coimbatore, Tamil Nadu",
-      link: "https://maps.google.com/?q=Coimbatore+Tamil+Nadu"
+      value: "BTM Layout, Bengaluru, Karnataka, India",
+      link: "https://www.google.com/maps/place/BTM+Layout,+Bengaluru,+Karnataka"
     },
     {
       icon: <Globe className="text-purple-400" size={24} />,
@@ -226,12 +230,7 @@ export default function Contact() {
                     >
                       Send Another Message
                     </button>
-                    <a
-                      href="mailto:vishnuprasathappanasamy@gmail.com"
-                      className="px-6 py-3 bg-gradient-to-r from-gray-800 to-gray-900 text-gray-300 font-medium rounded-xl border border-white/10 hover:border-blue-500/30 transition-all duration-300 hover:scale-105"
-                    >
-                      Open Email Client
-                    </a>
+                    
                   </div>
                 </div>
               </div>
