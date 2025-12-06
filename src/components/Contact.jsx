@@ -12,7 +12,6 @@ import {
   Sparkles,
   Calendar
 } from "lucide-react";
-import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -36,43 +35,40 @@ export default function Contact() {
     });
   };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  setLoading(true);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-  const templateParams = {
-    name: formData.name,
-    email: formData.email,
-    message: formData.message,
+    const formData = new FormData(e.target);
+    
+    // Add custom subject
+    formData.append('_subject', 'New Contact from Portfolio Website');
+
+    fetch("https://formsubmit.co/ajax/vishnuprasathappanasamy@gmail.com", {
+      method: "POST",
+      headers: { 
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: e.target.name.value,
+        email: e.target.email.value,
+        message: e.target.message.value,
+        _subject: 'New Contact from Portfolio Website'
+      }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setSubmitted(true);
+        setLoading(false);
+        e.target.reset();
+        setFormData({ name: '', email: '', message: '' });
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
   };
-
-  // Send main email (goes to YOU)
-  emailjs.send(
-    "service_lk89fwb",           // your service ID
-    "template_gma2e6x",             // replace with your main template ID
-    templateParams,
-    "Re1zSQsJC0kZf2LMj"            // your public key
-  )
-  .then(() => {
-    // Send AUTO REPLY (goes to USER)
-    return emailjs.send(
-      "service_lk89fwb",         // same service ID
-      "template_80vl6up",      // replace with your auto reply template ID
-      templateParams,
-      "Re1zSQsJC0kZf2LMj"
-    );
-  })
-  .then(() => {
-    setSubmitted(true);
-    setLoading(false);
-    setFormData({ name: "", email: "", message: "" });
-  })
-  .catch((error) => {
-    console.error("EmailJS Error:", error);
-    setLoading(false);
-  });
-};
-
 
   const contactInfo = [
     {
@@ -90,8 +86,8 @@ const handleSubmit = (e) => {
     {
       icon: <MapPin className="text-red-400" size={24} />,
       title: "Location",
-      value: "BTM Layout, Bengaluru, Karnataka, India",
-      link: "https://www.google.com/maps/place/BTM+Layout,+Bengaluru,+Karnataka"
+      value: "Coimbatore, Tamil Nadu",
+      link: "https://maps.google.com/?q=Coimbatore+Tamil+Nadu"
     },
     {
       icon: <Globe className="text-purple-400" size={24} />,
@@ -104,25 +100,24 @@ const handleSubmit = (e) => {
   return (
     <section id="contact" className="relative py-20 bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 overflow-hidden">
       {/* Animated Background Elements */}
-     <div className="absolute inset-0 overflow-hidden no-underline decoration-none">
-  <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
-  <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 rounded-full blur-3xl"></div>
-  <div className="absolute top-1/3 left-1/4 w-60 h-60 bg-gradient-to-r from-red-500/10 to-pink-500/10 rounded-full blur-3xl"></div>
-
-  {/* Animated Particles */}
-  {[...Array(20)].map((_, i) => (
-    <div 
-      key={i}
-      className="absolute w-1 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full animate-float no-underline decoration-none"
-      style={{
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        animationDelay: `${Math.random() * 5}s`,
-      }}
-    />
-  ))}
-</div>
-
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 left-1/4 w-60 h-60 bg-gradient-to-r from-red-500/10 to-pink-500/10 rounded-full blur-3xl"></div>
+        
+        {/* Animated Particles */}
+        {[...Array(20)].map((_, i) => (
+          <div 
+            key={i}
+            className="absolute w-1 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          />
+        ))}
+      </div>
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         {/* Header */}
@@ -165,22 +160,21 @@ const handleSubmit = (e) => {
                       {info.icon}
                     </div>
                     <div className="flex-1">
-  <h4 className="text-lg font-bold text-white mb-1">{info.title}</h4>
-  {info.link ? (
-    <a 
-      href={info.link} 
-      className="text-gray-300 hover:text-cyan-300 transition-colors duration-300 group no-underline decoration-none"
-      target={info.link.includes('http') ? '_blank' : '_self'}
-      rel={info.link.includes('http') ? 'noopener noreferrer' : ''}
-    >
-      <span className="no-underline decoration-none">{info.value}</span>
-      {info.link && <Sparkles className="inline ml-2 text-cyan-400" size={14} />}
-    </a>
-  ) : (
-    <p className="text-gray-300">{info.value}</p>
-  )}
-</div>
-
+                      <h4 className="text-lg font-bold text-white mb-1">{info.title}</h4>
+                      {info.link ? (
+                        <a 
+                          href={info.link} 
+                          className="text-gray-300 hover:text-cyan-300 transition-colors duration-300 group"
+                          target={info.link.includes('http') ? '_blank' : '_self'}
+                          rel={info.link.includes('http') ? 'noopener noreferrer' : ''}
+                        >
+                          <span className="group-hover:underline">{info.value}</span>
+                          {info.link && <Sparkles className="inline ml-2 text-cyan-400" size={14} />}
+                        </a>
+                      ) : (
+                        <p className="text-gray-300">{info.value}</p>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -232,12 +226,12 @@ const handleSubmit = (e) => {
                     >
                       Send Another Message
                     </button>
-                    {/* <a
+                    <a
                       href="mailto:vishnuprasathappanasamy@gmail.com"
                       className="px-6 py-3 bg-gradient-to-r from-gray-800 to-gray-900 text-gray-300 font-medium rounded-xl border border-white/10 hover:border-blue-500/30 transition-all duration-300 hover:scale-105"
                     >
                       Open Email Client
-                    </a> */}
+                    </a>
                   </div>
                 </div>
               </div>
@@ -363,7 +357,7 @@ const handleSubmit = (e) => {
             <Sparkles className="text-cyan-400" size={20} />
             <p className="text-gray-300">
               Prefer connecting on social media? 
-              <a href="https://www.linkedin.com/in/vishnu-prasath-a-vishnu/" target="_blank" className="text-cyan-300 hover:text-cyan-400 ml-2 font-medium">
+              <a href="https://linkedin.com/in/vishnu-prasath-a-4bb45a232/" className="text-cyan-300 hover:text-cyan-400 ml-2 font-medium">
                 Connect on LinkedIn →
               </a>
             </p>
