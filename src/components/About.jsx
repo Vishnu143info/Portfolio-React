@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ProfileImg from "../assets/Profile.jpg";
+import ProfileImg from "../assets/Profile.jpeg";
 import { 
   FaDownload, 
   FaChevronDown, 
@@ -176,33 +176,54 @@ export default function About() {
                     <div className="flex-1">
                       <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
                         <h3 className="text-xl md:text-2xl font-bold text-white flex items-center gap-2">
-                          Innomatrics Technologies
+                          First American (India)
                           <FaChartLine className="text-green-400 animate-pulse-slow flex-shrink-0" />
                         </h3>
                       </div>
                      <div className="space-y-3 text-sky-400">
   <h4 className="text-lg md:text-xl font-semibold bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
-    Full Stack Developer
+    Techinal Trainee
   </h4>
   <p className="text-gray-400 flex items-center gap-2 text-sm md:text-base">
     <FaMapMarkerAlt className="text-cyan-500 flex-shrink-0" />
-    Remote • Full Time • Sep 2025 - Present
+    Remote • Full Time • Mar 2026 - Present
   </p>
   
   <div className="space-y-2 text-gray-200">
-    <p className="flex items-start gap-2">
-      <span className="text-cyan-400 mt-1 flex-shrink-0">•</span>
-      <span className="text-sm md:text-base">Developing <span className="font-bold text-cyan-300">React.js applications</span> with modern UI/UX principles</span>
-    </p>
-    <p className="flex items-start gap-2">
-      <span className="text-orange-400 mt-1 flex-shrink-0">•</span>
-      <span className="text-sm md:text-base">Implementing <span className="font-bold text-orange-300">Firebase services</span> (Authentication, Firestore, Hosting)</span>
-    </p>
-    <p className="flex items-start gap-2">
-      <span className="text-emerald-400 mt-1 flex-shrink-0">•</span>
-      <span className="text-sm md:text-base">Working with <span className="font-bold text-emerald-300">MongoDB</span> for database management and data modeling</span>
-    </p>
-  </div>
+  <p className="flex items-start gap-2">
+    <span className="text-cyan-400 mt-1 flex-shrink-0">•</span>
+    <span className="text-sm md:text-base">
+      Involved in{" "}
+      <span className="font-bold text-cyan-300">Development</span> and{" "}
+      <span className="font-bold text-cyan-300">
+        Data Validation & Quality Assurance
+      </span>{" "}
+      to ensure accuracy and consistency
+    </span>
+  </p>
+
+  <p className="flex items-start gap-2">
+    <span className="text-orange-400 mt-1 flex-shrink-0">•</span>
+    <span className="text-sm md:text-base">
+      Developing and executing{" "}
+      <span className="font-bold text-orange-300">
+        Playwright Automation
+      </span>{" "}
+      using TypeScript
+    </span>
+  </p>
+
+  <p className="flex items-start gap-2">
+    <span className="text-emerald-400 mt-1 flex-shrink-0">•</span>
+    <span className="text-sm md:text-base">
+      Performing{" "}
+      <span className="font-bold text-emerald-300">
+        API Testing & Response Validation
+      </span>{" "}
+      to ensure application quality
+    </span>
+  </p>
+</div>
 </div>
                     </div>
                   </div>
