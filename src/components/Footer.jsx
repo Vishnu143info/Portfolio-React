@@ -55,7 +55,7 @@ export default function Footer() {
   const contactInfo = [
     { icon: <Mail size={16} />, text: 'vishnuprasathappanasamy@gmail.com', href: '#contact' },
     { icon: <Phone size={16} />, text: '+91 9344598906', href: 'tel:+919344598906' },
-    { icon: <MapPin size={16} />, text: 'BTM Layout, Bengaluru, Karnataka, India', href: 'https://www.google.com/maps/place/BTM+Layout,+Bengaluru,+Karnataka' },
+    { icon: <MapPin size={16} />, text: 'Coimbatore, Tamil Nadu,  India', href: 'https://maps.app.goo.gl/QxLUSGSHGvUoXPMY9' },
   ];
 
   return (

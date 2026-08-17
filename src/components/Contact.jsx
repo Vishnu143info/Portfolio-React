@@ -84,12 +84,12 @@ export default function Contact() {
       value: "+91 9344598906",
       link: "tel:+919344598906"
     },
-    {
-      icon: <MapPin className="text-red-400" size={24} />,
-      title: "Location",
-      value: "BTM Layout, Bengaluru",
-      link: "https://www.google.com/maps/place/BTM+Layout,+Bengaluru,+Karnataka"
-    },
+      // {
+      //   icon: <MapPin className="text-red-400" size={24} />,
+      //   title: "Location",
+      //   value: "BTM Layout, Bengaluru",
+      //   link: "https://www.google.com/maps/place/BTM+Layout,+Bengaluru,+Karnataka"
+      // },
     {
       icon: <Globe className="text-purple-400" size={24} />,
       title: "Available For",
