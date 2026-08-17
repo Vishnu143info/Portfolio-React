@@ -90,7 +90,7 @@ export default function Contact() {
       //   value: "BTM Layout, Bengaluru",
       //   link: "https://www.google.com/maps/place/BTM+Layout,+Bengaluru,+Karnataka"
       // },
-    {
+    { 
       icon: <Globe className="text-purple-400" size={24} />,
       title: "Available For",
       value: "Full-time & Freelance",

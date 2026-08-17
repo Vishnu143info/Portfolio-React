@@ -56,11 +56,11 @@ export default function About() {
   }, []);
 
   const floatingIcons = [
-    { icon: "⚡", delay: "0s", size: "text-2xl", color: "text-yellow-400" },
-    { icon: "✨", delay: "1s", size: "text-xl", color: "text-cyan-300" },
-    { icon: "🚀", delay: "2s", size: "text-3xl", color: "text-orange-400" },
-    { icon: "💡", delay: "3s", size: "text-2xl", color: "text-purple-300" },
-    { icon: "🌟", delay: "4s", size: "text-xl", color: "text-pink-300" },
+    // { icon: "⚡", delay: "0s", size: "text-2xl", color: "text-yellow-400" },
+    // { icon: "✨", delay: "1s", size: "text-xl", color: "text-cyan-300" },
+    // { icon: "🚀", delay: "2s", size: "text-3xl", color: "text-orange-400" },
+    // { icon: "💡", delay: "3s", size: "text-2xl", color: "text-purple-300" },
+    // { icon: "🌟", delay: "4s", size: "text-xl", color: "text-pink-300" },
   ];
 
   return (
@@ -150,7 +150,7 @@ export default function About() {
                 <div className="inline-flex flex-wrap items-center gap-3 bg-gradient-to-r from-gray-800/70 to-gray-900/70 backdrop-blur-md px-4 md:px-6 py-2 md:py-3 rounded-full border border-white/10 shadow-lg group-hover:border-cyan-500/50 transition-all duration-300">
                   <FaRocket className="text-cyan-400 animate-bounce flex-shrink-0" />
                   <p className="text-base md:text-lg text-gray-200">
-                    <span className="font-bold text-cyan-300">MERN Stack Developer</span> &{" "}
+                    <span className="font-bold text-cyan-300">Developer | Tester </span> &{" "}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500 font-bold">
                       AI/ML Innovator
                     </span>
